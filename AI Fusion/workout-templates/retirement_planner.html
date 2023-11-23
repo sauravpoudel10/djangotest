@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Retirement Planner</title>
+    
+   <meta name="description" content="">
+   <meta name="keyword" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script type="text/javascript">
+   // Set the title tag dynamically
+   document.title = "AI Fusion | Retirement Calculator";
+ 
+   // Set meta tags for description and keywords
+   var metaDescription = document.createElement("meta");
+   metaDescription.setAttribute("name", "description");
+   metaDescription.setAttribute("content", "Calculate how to retire faster, Retirement planner calculator");
+   document.head.appendChild(metaDescription);
+ 
+   var metaKeywords = document.createElement("meta");
+   metaKeywords.setAttribute("name", "keywords");
+   metaKeywords.setAttribute("content", "Retirement Calculator, Business Calculator, Retire faster");
+   document.head.appendChild(metaKeywords);
+ </script>
+ 
+ 
+ <script type="application/ld+json">
+   {
+     "@context": "http://schema.org",
+     "@type": "Service",
+     "name": "Retirement Calculator",
+     "image": "{% static 'img/aiyes.webp' %}",
+     "description": "Calculate how to retire fast mathmatically",
+     "provider": {
+       "@type": "Company",
+       "name": "AI Fusion"
+     },
+     "serviceType": "Retirement Calculator",
+   }
+   </script>
+   
+
+<style>
+   .sidebar ~ .mainhomecontent {
+   margin-left: 260px;
+   transition: width 0.3s ease, padding 0.3s ease;
+
+}
+
+.sidebar.close ~ .mainhomecontent  {
+   margin-left:  80px;
+   transition: width 0.3s ease, padding 0.3s ease;
+}
+@media (max-width: 750px) {
+   .sidebar.close ~ .mainhomecontent {
+     margin-left:  0px;
+    /* transition: width 0.3s ease, padding 0.3s ease; */
+   }
+}
+</style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <main class="mainhomecontent">
+    <h2>Retirement Planner</h2>
+    
+    <section >
+        <div class="banner-main">
+           <!-- <img src="{% static 'img/scholarship.png' %}" alt="#"/> -->
+           <div class="container">
+              <div class="text-bg">
+                 <h1>Business <strong class="white"> Calculator </strong></h1>
+                 <div class="button_section"> <a class="main_bt" href="#">Read More</a>  </div>
+                 <div class="container">
+                    <form class="main-form"  method="post"   action="{% url 'emergency_fund_calculator' %}">
+                    {% csrf_token %}
+                       <h3>Find Your Tour</h3>
+                       <div class="row">
+                          <div class="col-md-9">
+                             <div class="row">
+                            
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                 
+        <label for="income">Current Income:</label>
+        <input type="number" name="income" id="income">
+      </div>
+                            
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="home_loan_emi">Home Loan EMI:</label>
+                                    <input type="number" name="home_loan_emi" id="home_loan_emi">
+      </div>
+                            
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="retirement_income_goal">Retirement Income Goal:</label>
+                                    <input type="number" name="retirement_income_goal" id="retirement_income_goal">
+                            
+                             
+                                    
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="years_until_retirement">Years Until Retirement:</label>
+                                    <input type="number" name="years_until_retirement" id="years_until_retirement">
+      </div>
+                                
+
+
+                                
+                                
+                               
+                             </div>
+                          </div>
+                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <button type="submit">Calculate</button>
+                             
+                          </div>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+
+    <!-- <form method="post">
+        {% csrf_token %}
+        <label for="income">Current Income:</label>
+        <input type="number" name="income" id="income"><br><br>
+
+        <label for="retirement_income_goal">Retirement Income Goal:</label>
+        <input type="number" name="retirement_income_goal" id="retirement_income_goal"><br><br>
+
+        <label for="years_until_retirement">Years Until Retirement:</label>
+        <input type="number" name="years_until_retirement" id="years_until_retirement"><br><br>
+
+        <input type="submit" value="Calculate">
+    </form> -->
+
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+      </div>
+   </main>
+</body>
+</html>

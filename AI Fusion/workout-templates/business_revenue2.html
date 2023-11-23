@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    
+<style>
+    .sidebar ~ .mainhomecontent {
+    margin-left: 260px;
+    transition: width 0.3s ease, padding 0.3s ease;
+ 
+ }
+ 
+ .sidebar.close ~ .mainhomecontent  {
+    margin-left:  80px;
+    transition: width 0.3s ease, padding 0.3s ease;
+ }
+ @media (max-width: 750px) {
+    .sidebar.close ~ .mainhomecontent {
+      margin-left:  0px;
+     /* transition: width 0.3s ease, padding 0.3s ease; */
+    }
+ }
+ </style>
+</head>
+<body>
+    <h1>Results</h1>
+    <p>Current Revenue: {{ current_revenue }}</p>
+    <p>Target Revenue: {{ target_revenue }}</p>
+    <p>Current Sales: {{ current_sales }}</p>
+    <p>Growth in Sales: {{ growth_sales }}</p>
+
+    {% if rent_warning %}
+        <p style="color: red;">Warning: Rent percent is more than 5%. Consider reducing it.</p>
+    {% endif %}
+
+    <p>Business Type: {{ business_type }}</p>
+
+    <!-- Display more results if needed -->
+
+    <form method="post" action="{% url 'revenue2'%}">
+        {% csrf_token %}
+        <label for="product_type">Product Type:</label>
+        <select name="product_type" required>
+            <option value="physical">Physical</option>
+            <option value="digital">Digital</option>
+        </select>
+        <br>
+        <label for="product_description">Product Description (max 100 words):</label>
+        <textarea name="product_description" rows="4" cols="50" maxlength="100" required></textarea>
+        <br>
+        <label for="country">Country:</label>
+        <select name="country" required>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <!-- Add more country options as needed -->
+        </select> <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

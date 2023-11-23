@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+   <meta name="description" content="">
+   <meta name="keyword" content="">
+    <title>Emergency Fund Calculator</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script type="text/javascript">
+   // Set the title tag dynamically
+   document.title = "AI Fusion | Emergency Fund Calculator";
+ 
+   // Set meta tags for description and keywords
+   var metaDescription = document.createElement("meta");
+   metaDescription.setAttribute("name", "description");
+   metaDescription.setAttribute("content", "Emergency Fund Calculator ");
+   document.head.appendChild(metaDescription);
+ 
+   var metaKeywords = document.createElement("meta");
+   metaKeywords.setAttribute("name", "keywords");
+   metaKeywords.setAttribute("content", "Investment Calculators, Business Calculator");
+   document.head.appendChild(metaKeywords);
+ </script>
+ 
+ 
+ <script type="application/ld+json">
+   {
+     "@context": "http://schema.org",
+     "@type": "Service",
+     "name": "Emergency Fund Calculator",
+     "image": "{% static 'img/aiyes.webp' %}",
+     "description": "Emergency Fund Calculator",
+     "provider": {
+       "@type": "Company",
+       "name": "AI Fusion"
+     },
+     "serviceType": "Emergency Fund Calculator",
+   }
+   </script>
+   
+<style>
+   .sidebar ~ .mainhomecontent {
+   margin-left: 260px;
+   transition: width 0.3s ease, padding 0.3s ease;
+
+}
+
+.sidebar.close ~ .mainhomecontent  {
+   margin-left:  80px;
+   transition: width 0.3s ease, padding 0.3s ease;
+}
+@media (max-width: 750px) {
+   .sidebar.close ~ .mainhomecontent {
+     margin-left:  0px;
+    /* transition: width 0.3s ease, padding 0.3s ease; */
+   }
+}
+</style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <main class="mainhomecontent">
+
+    <h2>Emergency Fund Calculator</h2>
+
+    <section >
+        <div class="banner-main">
+           <!-- <img src="{% static 'img/scholarship.png' %}" alt="#"/> -->
+           <div class="container">
+              <div class="text-bg">
+                 <h1>Business <strong class="white"> Emergency Fund Calculator </strong></h1>
+                 <div class="button_section"> <a class="main_bt" href="#">Read More</a>  </div>
+                 <div class="container">
+                    <form class="main-form"  method="post"   action="{% url 'emergency_fund_calculator' %}">
+                    {% csrf_token %}
+                       <h3>Find Your Emergency Fund </h3>
+                       <div class="row">
+                          <div class="col-md-9">
+                             <div class="row">
+                            
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    
+        <label for="income_needed">Annual Family Income Needed:</label>
+        <input type="number" name="income_needed" required>
+      </div>
+                                
+
+
+                                
+                                
+                               
+                             </div>
+                          </div>
+                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <button type="submit">Calculate</button>
+                             
+                          </div>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+
+
+    <!-- <form method="post" action="{% url 'emergency_fund_calculator' %}">
+        {% csrf_token %}
+        <label for="income_needed">Annual Family Income Needed:</label>
+        <input type="number" name="income_needed" required>
+
+        <input type="submit" value="Calculate">
+    </form> -->
+
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+      </div>
+ </main>
+</body>
+</html>

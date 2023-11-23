@@ -1,0 +1,195 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+
+<script type="text/javascript">
+   // Set the title tag dynamically
+   document.title = "AI Fusion | Loan Reducer";
+ 
+   // Set meta tags for description and keywords
+   var metaDescription = document.createElement("meta");
+   metaDescription.setAttribute("name", "description");
+   metaDescription.setAttribute("content", "Reduce loan using CA recommendent way and calculator");
+   document.head.appendChild(metaDescription);
+ 
+   var metaKeywords = document.createElement("meta");
+   metaKeywords.setAttribute("name", "keywords");
+   metaKeywords.setAttribute("content", "Loan Calculator, Loan Reducer");
+   document.head.appendChild(metaKeywords);
+ </script>
+ 
+ 
+ <script type="application/ld+json">
+   {
+     "@context": "http://schema.org",
+     "@type": "Service",
+     "name": "Loan Reducer",
+     "image": "{% static 'img/aiyes.webp' %}",
+     "description": "Reduce loan using loan calculator and ca recommendent way",
+     "provider": {
+       "@type": "Company",
+       "name": "AI Fusion"
+     },
+     "serviceType": "Loan reducer",
+   }
+   </script>
+   
+<style>
+   .sidebar ~ .mainhomecontent {
+   margin-left: 260px;
+   transition: width 0.3s ease, padding 0.3s ease;
+
+}
+
+.sidebar.close ~ .mainhomecontent  {
+   margin-left:  80px;
+   transition: width 0.3s ease, padding 0.3s ease;
+}
+@media (max-width: 750px) {
+   .sidebar.close ~ .mainhomecontent {
+     margin-left:  0px;
+    /* transition: width 0.3s ease, padding 0.3s ease; */
+   }
+}
+</style>
+</head>
+<body>
+   {% include 'navbar.html'%}
+
+<main class="mainhomecontent">
+      <h2>Loan Calculator</h2>
+
+
+
+
+    <section >
+        <div class="banner-main">
+           <!-- <img src="" alt="#"/> -->
+           <div class="container">
+              <div class="text-bg">
+                 <h1>Loan <strong class="white"> Calculator </strong></h1>
+                 <div class="button_section"> <a class="main_bt" href="#">Read More</a>  </div>
+                 <div class="container">
+                    <form class="main-form"  method="post"   action="{% url 'calculate_loan' %}">
+                    {% csrf_token %}
+                       <h3>Find Your Tour</h3>
+                       <div class="row">
+                          <div class="col-md-9">
+                             <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="income">Income:</label>
+                                    <input type="text" class="form-control" name="income" required>
+                               </div>
+
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                 
+        <label for="interest_rate">Interest Rate:</label>
+        <input type="text" class="form-control"  name="interest_rate" required>
+
+                                </div>
+
+
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">  
+                                    <label for="total_amount">Total Loan Amount:</label>
+                                    <input type="text" class="form-control"  name="total_amount" required>
+                                 </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    
+        <label for="emi">EMI per month:</label>
+        <input type="text" class="form-control"  name="emi" required>
+                               </div>
+
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="total_years">Total Years:</label>
+                                    <input  class="form-control"  type="text" name="total_years" required>
+                                </div>
+
+                                
+                                <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                   <label >Category</label>
+                                   <select class="form-control" name="Any">
+                                      <option>Any</option>
+                                      <option>Option 1</option>
+                                      <option>Option 2</option>
+                                      <option>Option 3</option>
+                                   </select>
+                                </div> -->
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                 <label for="emergency_funds">Emergency Funds:</label>
+                                 <input class="form-control" type="number" name="emergency_funds" value="0" required>
+                               </div>
+                               
+                             </div>
+                          </div>
+                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+        <input type="submit" value="Calculate">
+                             
+                          </div>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+
+
+
+
+
+
+
+
+    <!-- <form method="post" action="{% url 'calculate_loan' %}">
+        {% csrf_token %}
+        <label for="income">Income:</label>
+        <input type="text" name="income" required><br>
+
+        <label for="interest_rate">Interest Rate:</label>
+        <input type="text" name="interest_rate" required><br>
+
+        <label for="total_amount">Total Loan Amount:</label>
+        <input type="text" name="total_amount" required><br>
+
+        <label for="emi">EMI per month:</label>
+        <input type="text" name="emi" required><br>
+
+        <label for="total_years">Total Years:</label>
+        <input type="text" name="total_years" required><br>
+
+        <input type="submit" value="Calculate">
+    </form> -->
+    <div class="d-flex p-2">
+    <h2>Loan Calculator Result</h2>
+</div>
+<div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+
+    <p>Total EMI to be paid: {{ total_emi }}</p>
+</div>
+
+<div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+
+    <p>Reduced years by paying 10% every 3 months: {{ reduced_years }}</p>
+</div>
+
+<div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+
+    <p>Money saved: {{ money_saved }}</p>
+</div>
+    
+</main>
+</body>
+</html>

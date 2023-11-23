@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Growth</title>
+    
+<style>
+   .sidebar ~ .mainhomecontent {
+   margin-left: 260px;
+   transition: width 0.3s ease, padding 0.3s ease;
+
+}
+
+.sidebar.close ~ .mainhomecontent  {
+   margin-left:  80px;
+   transition: width 0.3s ease, padding 0.3s ease;
+}
+@media (max-width: 750px) {
+   .sidebar.close ~ .mainhomecontent {
+     margin-left:  0px;
+    /* transition: width 0.3s ease, padding 0.3s ease; */
+   }
+}
+</style>
+</head>
+<body>
+   <main class="mainhomecontent">
+    <section >
+        <div class="banner-main">
+           <!-- <img src="{% static 'img/scholarship.png' %}" alt="#"/> -->
+           <div class="container">
+              <div class="text-bg">
+                 <h1>Business <strong class="white"> Calculator </strong></h1>
+                 <div class="button_section"> <a class="main_bt" href="#">Read More</a>  </div>
+                 <div class="container">
+                    <form class="main-form"  method="post"   action="{% url 'revenue1' %}">
+                    {% csrf_token %}
+                       <h3>Find Your Tour</h3>
+                       <div class="row">
+                          <div class="col-md-9">
+                             <div class="row">                                
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+
+                                <label for="current_revenue">Current Revenue:</label>
+                                <input class="form-control" type="text" name="current_revenue" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="target_revenue">Target Revenue:</label>
+                                <input class="form-control" type="text" name="target_revenue" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="current_sales">Current Sales:</label>
+                                <input class="form-control" type="text" name="current_sales" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="rent_percent">Rent Percentage:</label>
+                                <input class="form-control" type="text" name="rent_percent" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="employee_percent">Employee Percentage:</label>
+                                <input class="form-control" type="text" name="employee_percent" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="insurance_percent">Insurance Percentage:</label>
+                                <input class="form-control" type="text" name="insurance_percent" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="marketing_percent">Marketing Percentage:</label>
+                                <input class="form-control" type="text" name="marketing_percent" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="product_cost_percent">Product Cost Percentage:</label>
+                                <input class="form-control" type="text" name="product_cost_percent" required>
+                             </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                
+                                <label for="business_type">Business Type (Physical/Digital):</label>
+                                <input class="form-control" type="text" name="business_type" required>
+                             </div>
+                                
+                               
+                             </div>
+                          </div>
+                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <button type="submit">Calculate</button>
+                             
+                          </div>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+   </main>
+</body>
+</html>

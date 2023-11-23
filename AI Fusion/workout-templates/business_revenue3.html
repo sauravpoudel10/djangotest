@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<style>
+    .sidebar ~ .mainhomecontent {
+    margin-left: 260px;
+    transition: width 0.3s ease, padding 0.3s ease;
+ 
+ }
+ 
+ .sidebar.close ~ .mainhomecontent  {
+    margin-left:  80px;
+    transition: width 0.3s ease, padding 0.3s ease;
+ }
+ @media (max-width: 750px) {
+    .sidebar.close ~ .mainhomecontent {
+      margin-left:  0px;
+     /* transition: width 0.3s ease, padding 0.3s ease; */
+    }
+ }
+ </style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+
+    <main class="mainhomecontent">
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <p>Business Type: {{ business_type }}</p>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <p>Product Type: {{ product_type }}</p>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <p>Product Description: {{ product_description }}</p>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <p>Country: {{ country }}</p>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <h2>50 Places where the product is more popular:</h2>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <ul>
+            {% for place in product_info.trending_places %}
+                <li>{{ place }}</li>
+            {% endfor %}
+        </ul>
+    
+    </div>
+   
+
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <h2>20 Manufacturing Plants related to business in the country:</h2>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <ul>
+            {% for plant in product_info.manufacturing_plants %}
+                <li>{{ plant }}</li>
+            {% endfor %}
+        </ul>
+    
+    
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <h2>20 Main Suppliers of the country to supply the product:</h2>
+
+    </div>
+    <div class="d-flex p-2" style="font-size: larger; font-weight: bold;">
+        <ul>
+            {% for supplier in product_info.suppliers %}
+                <li>{{ supplier }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+</body>
+</html>
